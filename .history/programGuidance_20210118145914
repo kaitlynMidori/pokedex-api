@@ -1,0 +1,58 @@
+The requirements for the app are:
+
+Users can search for Pokemon by name or type
+The endpoint is GET /pokemon
+The search options for either name or type are provided in query string parameters.
+When searching by name, users are searching for whether the Pokemon's name 
+includes a specified string. The search should be case insensitive.
+When searching by type, users must specify one of the valid types.
+The API responds with an array of full pokedex entries for the search results
+Users can request a list of all the valid types of Pokemon.
+The endpoint is GET /types
+Both endpoints are public and only respond when given a valid Authorization header 
+with a Bearer API token value.
+Both endpoints should have general security in place
+
+1. Make a new project for this application called pokedex-api, 
+initialize it as an NPM project and Git, set up a .gitignore, 
+install express, nodemon and set up the server.js file.
+
+mkdir pokedex-api && cd $_
+npm init -y
+git init
+echo "node_modules" > .gitignore
+echo "console.log('hello')" > server.js
+npm install express morgan
+npm install nodemon -D
+
+2. You can open the project in your editor and update the package.json 
+scripts to read like so:
+
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+},
+
+3. Check that everything in the scripts work so far with a quick npm start, 
+this should log "hello" to the console.
+Now we can wire up a minimal express application inside server.js.
+Make an express app that listens to a port (e.g. 8000), we can tell it to 
+always respond with "Hello, world!" at first and add morgan logging. Change 
+the contents of server.js to the following:
+
+const express = require('express')
+const morgan = require('morgan')
+
+const app = express()
+
+app.use(morgan('dev'))
+
+app.use((req, res) => {
+  res.send('Hello, world!')
+})
+
+const PORT = 8000
+
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`)
+})
