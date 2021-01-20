@@ -8,6 +8,8 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
+  //We need to tell Heroku the version of Node that our application expects
+  //And then add a new section to your package.json file with this version listed:
   "engines": {
     "node": "14.15.0"
   },
