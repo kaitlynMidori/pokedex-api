@@ -147,7 +147,7 @@ $ npm audit
 10. Deploy
 
 $ heroku create
-$ git remote -v
+$ git remote -value
 $ git push heroku master
 
 11. To check that the deploy has worked, we can read the logs in our Heroku application 
